@@ -1,5 +1,5 @@
 
-const CACHE='cosepa-v05-20261025';
+const CACHE='cosepa-v06-20261025';
 
 const ASSETS = [
   './',
