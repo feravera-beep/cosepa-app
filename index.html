@@ -17,18 +17,71 @@
   <span>CAPACITACIONES</span>
 </a>
 
-</div></section>
 <aside class="notice">
-  <div style="font-size:16px; font-weight:bold; color:#087fd0; margin-bottom:10px;">
-    🛡️ CONSEJO DE SEGURIDAD
+  <div id="tituloConsejo" style="font-size:16px; font-weight:bold; color:#087fd0; margin-bottom:10px;">
+    🛡️ CONSEJO DE SEGURIDAD SEMANAL
   </div>
-  <div style="font-size:15px; color:#16344b; line-height:1.6;">
-    Antes de administrar un medicamento, verificá
-    la identidad del paciente utilizando
-    <strong>dos identificadores: nombre completo
-    y número de cédula de identidad.</strong>
+  <div id="textoConsejo" style="font-size:15px; color:#16344b; line-height:1.6;">
+    Antes de administrar un medicamento, verificá la identidad del paciente utilizando <strong>dos identificadores: nombre completo y número de cédula de identidad.</strong>
   </div>
 </aside>
+
+<script>
+const consejosSeguridad = [
+  "Antes de administrar un medicamento, verificá la identidad del paciente utilizando <strong>dos identificadores: nombre completo y número de cédula de identidad.</strong>",
+  "Antes de administrar un medicamento, comprobá los <strong>cinco correctos: paciente, medicamento, dosis, vía y hora.</strong>",
+  "Realizá higiene de manos en los <strong>cinco momentos establecidos por la OMS.</strong>",
+  "Antes de realizar un procedimiento, verificá la identidad del paciente y confirmá que corresponda con la indicación médica.",
+  "Los medicamentos de alto riesgo requieren <strong>doble verificación independiente</strong> según el protocolo institucional.",
+  "Nunca administres un medicamento si la indicación es ilegible, incompleta o genera dudas. <strong>Consultá antes de actuar.</strong>",
+  "Antes de utilizar una vía venosa, comprobá su permeabilidad y observá el sitio de inserción para detectar signos de complicación.",
+  "Identificá correctamente las muestras biológicas junto al paciente, inmediatamente después de obtenerlas.",
+  "Ante una caída, evaluá al paciente, notificá el evento y registrá lo ocurrido, incluso si no presenta lesiones.",
+  "Mantené la cama en posición baja y los frenos colocados para reducir el riesgo de caídas.",
+  "Verificá las alergias del paciente antes de administrar medicamentos o realizar procedimientos.",
+  "No utilices medicamentos con envases deteriorados, etiquetas ilegibles o vencimiento cumplido.",
+  "Comunicá los cambios clínicos relevantes del paciente de forma clara, completa y oportuna.",
+  "Antes de una transfusión, verificá la identidad del paciente y los datos del hemocomponente según el protocolo institucional.",
+  "Mantené separados e identificados los medicamentos de aspecto o nombre similar para prevenir confusiones.",
+  "Ante una transferencia de paciente, asegurá una comunicación efectiva sobre diagnósticos, tratamientos y riesgos.",
+  "Evaluá periódicamente el riesgo de lesiones por presión y aplicá medidas preventivas individualizadas.",
+  "Verificá la correcta identificación de las soluciones y conexiones antes de iniciar una infusión.",
+  "Notificá también los incidentes sin daño y los casi errores: <strong>son oportunidades para aprender y prevenir futuros eventos.</strong>",
+  "Ante una duda sobre una práctica asistencial, detené el procedimiento y solicitá ayuda. <strong>La seguridad siempre es prioritaria.</strong>"
+];
+
+function actualizarConsejoSemanal() {
+  const hoy = new Date();
+  const dia = new Date(
+    hoy.getFullYear(), hoy.getMonth(), hoy.getDate()
+  );
+
+  const diaSemana = (dia.getDay() + 6) % 7;
+  dia.setDate(dia.getDate() - diaSemana);
+
+  const semanaActual = Date.UTC(
+    dia.getFullYear(), dia.getMonth(), dia.getDate()
+  );
+
+  // Semana inicial: lunes 2 de noviembre de 2026
+  const semanaInicial = Date.UTC(2026, 10, 2);
+  const numeroSemana = Math.floor(
+    (semanaActual - semanaInicial) / 604800000
+  );
+
+  const indice = ((numeroSemana % consejosSeguridad.length)
+    + consejosSeguridad.length) % consejosSeguridad.length;
+
+  document.getElementById("tituloConsejo").textContent =
+    "🛡️ CONSEJO DE SEGURIDAD SEMANAL";
+
+  document.getElementById("textoConsejo").innerHTML =
+    consejosSeguridad[indice];
+}
+
+actualizarConsejoSemanal();
+</script>
+
 <footer class="footer">COSEPA COMERO · Versión 0.4</footer></main><script>if('serviceWorker'in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}</script>
 <div style="text-align:center; margin:30px 16px; padding:20px; background:#f3f8fc; border-radius:16px;">
   <p style="font-weight:600; color:#17456b;">
